@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____, KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE,                        XXXXX,   XXXXX,   XXXXX,  KC_ALGR,  XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             KC_GT, KC_RPRN, KC_UNDS,      XXXXX,   XXXXX,   XXXXX \
+                                           KC_RBRC, KC_RPRN, KC_UNDS,      XXXXX,   XXXXX,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -121,13 +121,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MED] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         _____,   RESET,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   _____,\
+         _____,   RESET,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                       T_QWER,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                        XXXXX, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT,   _____,\
+         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                        XXXXX, KC_MNXT, KC_VOLD, KC_MPLY,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,   XXXXX, KC_ALGR,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   _____,\
+         _____,   XXXXX, KC_ALGR,   XXXXX,   XXXXX,   XXXXX,                        XXXXX, KC_MPRV, KC_VOLU, KC_MUTE,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   XXXXX,   XXXXX,    KC_MSTP, KC_MPLY, KC_MUTE \
+                                             XXXXX,   XXXXX,   XXXXX,    KC_MSTP,   XXXXX,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____,  KC_F11,   KC_F4,   KC_F5,   KC_F6, KC_SLCK,                        XXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_PAUS,                        XXXXX,   XXXXX,   XXXXX, KC_ALGR,   XXXXX,   _____,\
+         _____,  KC_F10,   KC_F1,   KC_F2,   KC_F3, KC_NLCK,                        XXXXX,   XXXXX,   XXXXX, KC_ALGR,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                              XXXXX,   XXXXX,  KC_APP,     KC_SPC,  KC_TAB,   XXXXX \
                                         //`--------------------------'  `--------------------------'
@@ -184,7 +184,7 @@ void render_logo(void) {
 // Master OLED Screen (Left Hand )
 void render_master_oled(void) {
     render_separator();
-    render_usb_state();
+    render_lock_state();
     render_separator();
     render_layer_state();
 }

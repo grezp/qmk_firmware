@@ -35,13 +35,13 @@ void render_layer_state(void){
             oled_write_ln_P(PSTR("[ MODE | MEDIA     ]"), false);
             break;
         case _NAV:
-            oled_write_ln_P(PSTR("[ MODE | NAVIGATION]"), false);
+            oled_write_ln_P(PSTR("[ MODE | NAVIGATE  ]"), false);
             break;
         case _MOU:
             oled_write_ln_P(PSTR("[ MODE | MOUSE     ]"), false);
             break;
         case _FUN:
-            oled_write_ln_P(PSTR("[ MODE | FUNCTION   ]"), false);
+            oled_write_ln_P(PSTR("[ MODE | F-KEYS    ]"), false);
             break;
         default:
             oled_write_ln_P(PSTR("[ MODE | UNDEF     ]"), false);
@@ -49,27 +49,18 @@ void render_layer_state(void){
 }
 
 // Render USB State
-void render_usb_state(void) {
-    switch (USB_DeviceState) {
-      case DEVICE_STATE_Unattached:
-          oled_write_ln_P(PSTR("[ USB  | FREE      ]"), false);
-          break;
-      case DEVICE_STATE_Suspended:
-          oled_write_ln_P(PSTR("[ USB  | SLEEP     ]"), false);
-          break;
-      case DEVICE_STATE_Configured:
-          oled_write_ln_P(PSTR("[ USB  | READY     ]"), false);
-          break;
-      case DEVICE_STATE_Powered:
-          oled_write_ln_P(PSTR("[ USB  | PWRD      ]"), false);
-          break;
-      case DEVICE_STATE_Default:
-          oled_write_ln_P(PSTR("[ USB  | DFLT      ]"), false);
-          break;
-      case DEVICE_STATE_Addressed:
-          oled_write_ln_P(PSTR("[ USB  | ADDRS     ]"), false);
-          break;
-      default:
-          oled_write_ln_P(PSTR("[ USB  | INVALID   ]"), false);
+void render_lock_state(void) {
+    led_t led_state = host_keyboard_led_state();
+    if (led_state.caps_lock) {
+        oled_write_ln_P(PSTR("[ LOCK | CAPSLOCK  ]"), false);
+    }
+    else if (led_state.scroll_lock) {
+        oled_write_ln_P(PSTR("[ LOCK | SCROLL    ]"), false);
+    }
+    else if (led_state.num_lock) {
+        oled_write_ln_P(PSTR("[ LOCK | NUMLOCK   ]"), false);
+    }
+    else {
+        oled_write_ln_P(PSTR("[ LOCK | NONE      ]"), false);
     }
 }

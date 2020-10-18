@@ -6,4 +6,4 @@ void render_separator(void);
 // Render layer state
 void render_layer_state(void);
 // Render USB State
-void render_usb_state(void);
+void render_lock_state(void);
