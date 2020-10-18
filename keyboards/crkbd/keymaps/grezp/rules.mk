@@ -1,12 +1,6 @@
-CONSOLE_ENABLE = no         # Console for debug
-COMMAND_ENABLE = no         # Commands for debug and configuration
-MIDI_ENABLE = no            # MIDI controls
-AUDIO_ENABLE = no           # Audio output on port C6
-MOUSEKEY_ENABLE = no
-RGBLIGHT_ENABLE = no
-RGB_MATRIX_ENABLE = no
-OLED_DRIVER_ENABLE = yes
-EXTRAKEY_ENABLE = yes
+OLED_DRIVER_ENABLE = yes # new OLED driver
+EXTRAKEY_ENABLE = yes # audio controls
+MOUSEKEY_ENABLE = yes # use mouse keys
 BOOTLOADER = atmel-dfu
 
 # If you want to change the display of OLED, you need to change here

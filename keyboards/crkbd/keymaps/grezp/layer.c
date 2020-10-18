@@ -31,8 +31,17 @@ void render_layer_state(void){
         case _SYM:
             oled_write_ln_P(PSTR("[ MODE | SYMBOLS   ]"), false);
             break;
-        case _ADJ:
-            oled_write_ln_P(PSTR("[ MODE | ADJUST    ]"), false);
+        case _MED:
+            oled_write_ln_P(PSTR("[ MODE | MEDIA     ]"), false);
+            break;
+        case _NAV:
+            oled_write_ln_P(PSTR("[ MODE | NAVIGATION]"), false);
+            break;
+        case _MOU:
+            oled_write_ln_P(PSTR("[ MODE | MOUSE     ]"), false);
+            break;
+        case _FUN:
+            oled_write_ln_P(PSTR("[ MODE | FUNCTION   ]"), false);
             break;
         default:
             oled_write_ln_P(PSTR("[ MODE | UNDEF     ]"), false);
