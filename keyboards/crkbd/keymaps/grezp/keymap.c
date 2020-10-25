@@ -18,9 +18,9 @@ bool master_oled_cleared = false;
 
 // Layer defines
 #define MED_TAB  LT(_MED, KC_TAB)
-#define NAV_ESC  LT(_NAV, KC_ESC)
-#define MOU_SPC  LT(_MOU, KC_SPC)
-#define NUM_BSP  LT(_NUM, KC_BSPC)
+#define NUM_ESC  LT(_NUM, KC_ESC)
+#define NAV_SPC  LT(_NAV, KC_SPC)
+#define MOU_BSP  LT(_MOU, KC_BSPC)
 #define SYM_ENT  LT(_SYM, KC_ENT)
 #define FUN_DEL  LT(_FUN, KC_DEL)
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX,    KC_Z,  RALT_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, RALT_DT, KC_SLSH,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           MED_TAB, NAV_ESC, MOU_SPC,    NUM_BSP, SYM_ENT, FUN_DEL \
+                                           MED_TAB, NUM_ESC, NAV_SPC,    MOU_BSP, SYM_ENT, FUN_DEL \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -73,13 +73,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NUM] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         _____, KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   _____,\
+         _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                      KC_LBRC,    KC_7,    KC_8,    KC_9, KC_RBRC,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____, KC_SCLN,    KC_4,    KC_5,    KC_6,  KC_EQL,                        XXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,   _____,\
+         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                       KC_EQL,    KC_4,    KC_5,    KC_6, KC_SCLN,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,  KC_GRV,    KC_1,    KC_2,    KC_3, KC_BSLS,                        XXXXX,   XXXXX,   XXXXX,  KC_ALGR,  XXXXX,   _____,\
+         _____,   XXXXX, KC_ALGR,   XXXXX,   XXXXX,   XXXXX,                      KC_BSLS,    KC_1,    KC_2,    KC_3,  KC_GRV,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                            KC_DOT,    KC_0, KC_MINS,      XXXXX,   XXXXX,   XXXXX \
+                                             XXXXX,   XXXXX,   XXXXX,    KC_MINS,    KC_0,  KC_DOT \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____, KC_TILD, KC_EXLM,   KC_AT, KC_HASH, KC_PIPE,                        XXXXX,   XXXXX,   XXXXX,  KC_ALGR,  XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_RBRC, KC_RPRN, KC_UNDS,      XXXXX,   XXXXX,   XXXXX \
+                                           KC_LPRN, KC_RPRN, KC_UNDS,      XXXXX,   XXXXX,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -109,13 +109,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOU] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX, KC_WBAK, KC_MS_U, KC_WFWD,   XXXXX,   _____,\
+         _____,   XXXXX, KC_WH_U, KC_MS_U, KC_WH_D,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                        XXXXX, KC_MS_L, KC_MS_D, KC_MS_R,   XXXXX,   _____,\
+         _____, KC_WBAK, KC_MS_L, KC_MS_D, KC_MS_R, KC_WFWD,                        XXXXX, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,   XXXXX, KC_ALGR,   XXXXX,   XXXXX,   XXXXX,                      KC_WH_L, KC_WH_U, KC_WH_D, KC_WH_R,   XXXXX,   _____,\
+         _____,   XXXXX, KC_WH_L,   XXXXX, KC_WH_R,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,  KC_ALGR,  XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   XXXXX,  XXXXX,     KC_BTN1, KC_BTN3, KC_BTN2 \
+                                           KC_BTN2, KC_BTN3, KC_BTN1,      XXXXX,   XXXXX,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
