@@ -17,7 +17,7 @@ bool master_oled_cleared = false;
 #define T_QWER   TG(_QWERTY)
 
 // Layer defines
-#define MED_TAB  LT(_MED, KC_TAB)
+#define NAV_TAB  LT(_NAV, KC_TAB)
 #define NUM_ESC  LT(_NUM, KC_ESC)
 #define NAV_SPC  LT(_NAV, KC_SPC)
 #define MOU_BSP  LT(_MOU, KC_BSPC)
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX,    KC_Z,  RALT_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, RALT_DT, KC_SLSH,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           MED_TAB, NUM_ESC, NAV_SPC,    MOU_BSP, SYM_ENT, FUN_DEL \
+                                           NAV_TAB, NUM_ESC,  KC_SPC,    KC_BSPC, SYM_ENT, FUN_DEL \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -97,13 +97,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                      KC_AGIN, KC_UNDO,  KC_CUT, KC_COPY, KC_PSTE,   _____,\
+         _____,   RESET,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX, KC_VOLD, KC_MUTE, KC_VOLU,   XXXXX,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, KC_CAPS,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____,   XXXXX, KC_ALGR,   XXXXX,   XXXXX,   XXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   XXXXX,   XXXXX,     KC_ENT, KC_BSPC,  KC_DEL \
+                                             XXXXX,   XXXXX,   XXXXX,    KC_MPLY, KC_MPRV, KC_MNXT \
                                         //`--------------------------'  `--------------------------'
     ),
 
