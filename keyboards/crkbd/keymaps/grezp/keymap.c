@@ -24,18 +24,6 @@ bool master_oled_cleared = false;
 #define SYM_ENT  LT(_SYM, KC_ENT)
 #define FUN_DEL  LT(_FUN, KC_DEL)
 
-// Colemak-DHm mods
-#define GUI_A    LGUI_T(KC_A)
-#define ALT_R    LALT_T(KC_R)
-#define CTL_S    LCTL_T(KC_S)
-#define SFT__T   LSFT_T(KC_T)
-#define SFT_N    LSFT_T(KC_N)
-#define CTL_E    LCTL_T(KC_E)
-#define ALT_I    LALT_T(KC_I)
-#define GUI_O    LGUI_T(KC_O)
-#define RALT_X   ALGR_T(KC_X)
-#define RALT_DT  ALGR_T(KC_DOT)
-
 // QWERTY mods
 #define ALT_S    LALT_T(KC_S)
 #define CTL_D    LCTL_T(KC_D)
@@ -45,15 +33,46 @@ bool master_oled_cleared = false;
 #define ALT_L    LALT_T(KC_L)
 #define GUI_QUO  LGUI_T(KC_QUOT)
 
+enum combos {
+    SPC_T_LSFT,
+    SPC_S_LCTL,
+    SPC_R_LALT,
+    SPC_A_LGUI,
+    BSP_N_LSFT,
+    BSP_E_LCTL,
+    BSP_I_LALT,
+    BSP_O_LGUI
+};
+
+const uint16_t PROGMEM spc_t_combo[] = {KC_SPC, KC_T, COMBO_END};
+const uint16_t PROGMEM spc_s_combo[] = {KC_SPC, KC_S, COMBO_END};
+const uint16_t PROGMEM spc_r_combo[] = {KC_SPC, KC_R, COMBO_END};
+const uint16_t PROGMEM spc_a_combo[] = {KC_SPC, KC_A, COMBO_END};
+const uint16_t PROGMEM bsp_n_combo[] = {KC_BSPC, KC_N, COMBO_END};
+const uint16_t PROGMEM bsp_e_combo[] = {KC_BSPC, KC_E, COMBO_END};
+const uint16_t PROGMEM bsp_i_combo[] = {KC_BSPC, KC_I, COMBO_END};
+const uint16_t PROGMEM bsp_o_combo[] = {KC_BSPC, KC_O, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+    [SPC_T_LSFT] = COMBO(spc_t_combo, KC_LSFT),
+    [SPC_S_LCTL] = COMBO(spc_s_combo, KC_LCTL),
+    [SPC_R_LALT] = COMBO(spc_r_combo, KC_LALT),
+    [SPC_A_LGUI] = COMBO(spc_a_combo, KC_LGUI),
+    [BSP_N_LSFT] = COMBO(bsp_n_combo, KC_LSFT),
+    [BSP_E_LCTL] = COMBO(bsp_e_combo, KC_LCTL),
+    [BSP_I_LALT] = COMBO(bsp_i_combo, KC_LALT),
+    [BSP_O_LGUI] = COMBO(bsp_o_combo, KC_LGUI)
+};
+
 // [Keymaps] -----------------------------------------------------------------//
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT( \
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
          XXXXX,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_QUOT,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         XXXXX,   GUI_A,   ALT_R,   CTL_S,  SFT__T,    KC_G,                         KC_M,   SFT_N,   CTL_E,   ALT_I,   GUI_O,   XXXXX,\
+         XXXXX,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         XXXXX,    KC_Z,  RALT_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM, RALT_DT, KC_SLSH,   XXXXX,\
+         XXXXX,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            NAV_TAB, NUM_ESC,  KC_SPC,    KC_BSPC, SYM_ENT, FUN_DEL \
                                         //`--------------------------'  `--------------------------'
@@ -63,9 +82,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
          _____,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,   GUI_A,   ALT_S,   CTL_D,   SFT_F,    KC_G,                         KC_H,   SFT_J,   CTL_K,   ALT_L, GUI_QUO,   _____,\
+         _____,    KC_A,   ALT_S,   CTL_D,   SFT_F,    KC_G,                         KC_H,   SFT_J,   CTL_K,   ALT_L, GUI_QUO,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,    KC_Z,  RALT_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM, RALT_DT, KC_SLSH,   _____,\
+         _____,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                              _____,   _____,   _____,      _____,   _____,   _____ \
                                         //`--------------------------'  `--------------------------'

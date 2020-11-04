@@ -15,6 +15,13 @@
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
 
+// Combos
+#define COMBO_COUNT 8
+#define COMBO_TERM 35
+#define COMBO_MOD_TERM 200
+#define COMBO_MUST_HOLD_MODS
+#define COMBO_PERMISSIVE_HOLD
+
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY          0
