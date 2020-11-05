@@ -24,44 +24,108 @@ bool master_oled_cleared = false;
 #define SYM_ENT  LT(_SYM, KC_ENT)
 #define FUN_DEL  LT(_FUN, KC_DEL)
 
-// QWERTY mods
-#define ALT_S    LALT_T(KC_S)
-#define CTL_D    LCTL_T(KC_D)
-#define SFT_F    LSFT_T(KC_F)
-#define SFT_J    LSFT_T(KC_J)
-#define CTL_K    LCTL_T(KC_K)
-#define ALT_L    LALT_T(KC_L)
-#define GUI_QUO  LGUI_T(KC_QUOT)
-
+// S = shift
+// C = control
+// A = alt
+// G = gui
 enum combos {
-    SPC_T_LSFT,
-    SPC_S_LCTL,
-    SPC_R_LALT,
-    SPC_A_LGUI,
-    BSP_N_LSFT,
-    BSP_E_LCTL,
-    BSP_I_LALT,
-    BSP_O_LGUI
+    L_xxxS,
+    L_xxCx,
+    L_xxCS,
+    L_xAxx,
+    L_xAxS,
+    L_xACx,
+    L_xACS,
+    L_Gxxx,
+    L_GxxS,
+    L_GxCx,
+    L_GxCS,
+    L_GAxx,
+    L_GAxS,
+    L_GACx,
+    L_GACS,
+    
+    R_xxxS,
+    R_xxCx,
+    R_xxCS,
+    R_xAxx,
+    R_xAxS,
+    R_xACx,
+    R_xACS,
+    R_Gxxx,
+    R_GxxS,
+    R_GxCx,
+    R_GxCS,
+    R_GAxx,
+    R_GAxS,
+    R_GACx,
+    R_GACS
 };
 
-const uint16_t PROGMEM spc_t_combo[] = {KC_SPC, KC_T, COMBO_END};
-const uint16_t PROGMEM spc_s_combo[] = {KC_SPC, KC_S, COMBO_END};
-const uint16_t PROGMEM spc_r_combo[] = {KC_SPC, KC_R, COMBO_END};
-const uint16_t PROGMEM spc_a_combo[] = {KC_SPC, KC_A, COMBO_END};
-const uint16_t PROGMEM bsp_n_combo[] = {KC_BSPC, KC_N, COMBO_END};
-const uint16_t PROGMEM bsp_e_combo[] = {KC_BSPC, KC_E, COMBO_END};
-const uint16_t PROGMEM bsp_i_combo[] = {KC_BSPC, KC_I, COMBO_END};
-const uint16_t PROGMEM bsp_o_combo[] = {KC_BSPC, KC_O, COMBO_END};
+const uint16_t PROGMEM l_xxxS[] = {KC_SPC, KC_T, COMBO_END};
+const uint16_t PROGMEM l_xxCx[] = {KC_SPC, KC_S, COMBO_END};
+const uint16_t PROGMEM l_xxCS[] = {KC_SPC, KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM l_xAxx[] = {KC_SPC, KC_R, COMBO_END};
+const uint16_t PROGMEM l_xAxS[] = {KC_SPC, KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM l_xACx[] = {KC_SPC, KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM l_xACS[] = {KC_SPC, KC_R, KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM l_Gxxx[] = {KC_SPC, KC_A, COMBO_END};
+const uint16_t PROGMEM l_GxxS[] = {KC_SPC, KC_A, KC_T, COMBO_END};
+const uint16_t PROGMEM l_GxCx[] = {KC_SPC, KC_A, KC_S, COMBO_END};
+const uint16_t PROGMEM l_GxCS[] = {KC_SPC, KC_A, KC_S, KC_T, COMBO_END};
+const uint16_t PROGMEM l_GAxx[] = {KC_SPC, KC_A, KC_R, COMBO_END};
+const uint16_t PROGMEM l_GAxS[] = {KC_SPC, KC_A, KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM l_GACx[] = {KC_SPC, KC_A, KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM l_GACS[] = {KC_SPC, KC_A, KC_R, KC_S, KC_T, COMBO_END};
+
+const uint16_t PROGMEM r_xxxS[] = {KC_BSPC, KC_N, COMBO_END};
+const uint16_t PROGMEM r_xxCx[] = {KC_BSPC, KC_E, COMBO_END};
+const uint16_t PROGMEM r_xxCS[] = {KC_BSPC, KC_E, KC_N, COMBO_END};
+const uint16_t PROGMEM r_xAxx[] = {KC_BSPC, KC_I, COMBO_END};
+const uint16_t PROGMEM r_xAxS[] = {KC_BSPC, KC_I, KC_N, COMBO_END};
+const uint16_t PROGMEM r_xACx[] = {KC_BSPC, KC_I, KC_E, COMBO_END};
+const uint16_t PROGMEM r_xACS[] = {KC_BSPC, KC_I, KC_E, KC_N, COMBO_END};
+const uint16_t PROGMEM r_Gxxx[] = {KC_BSPC, KC_O, COMBO_END};
+const uint16_t PROGMEM r_GxxS[] = {KC_BSPC, KC_O, KC_N, COMBO_END};
+const uint16_t PROGMEM r_GxCx[] = {KC_BSPC, KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM r_GxCS[] = {KC_BSPC, KC_O, KC_E, KC_N, COMBO_END};
+const uint16_t PROGMEM r_GAxx[] = {KC_BSPC, KC_O, KC_I, COMBO_END};
+const uint16_t PROGMEM r_GAxS[] = {KC_BSPC, KC_O, KC_I, KC_N, COMBO_END};
+const uint16_t PROGMEM r_GACx[] = {KC_BSPC, KC_O, KC_I, KC_E, COMBO_END};
+const uint16_t PROGMEM r_GACS[] = {KC_BSPC, KC_O, KC_I, KC_E, KC_N, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    [SPC_T_LSFT] = COMBO(spc_t_combo, KC_LSFT),
-    [SPC_S_LCTL] = COMBO(spc_s_combo, KC_LCTL),
-    [SPC_R_LALT] = COMBO(spc_r_combo, KC_LALT),
-    [SPC_A_LGUI] = COMBO(spc_a_combo, KC_LGUI),
-    [BSP_N_LSFT] = COMBO(bsp_n_combo, KC_LSFT),
-    [BSP_E_LCTL] = COMBO(bsp_e_combo, KC_LCTL),
-    [BSP_I_LALT] = COMBO(bsp_i_combo, KC_LALT),
-    [BSP_O_LGUI] = COMBO(bsp_o_combo, KC_LGUI)
+    [L_xxxS] = COMBO(l_xxxS, KC_LSFT),
+    [L_xxCx] = COMBO(l_xxCx, KC_LCTL),
+    [L_xxCS] = COMBO(l_xxCS, LCTL(KC_LSFT)),
+    [L_xAxx] = COMBO(l_xAxx, KC_LALT),
+    [L_xAxS] = COMBO(l_xAxS, LALT(KC_LSFT)),
+    [L_xACx] = COMBO(l_xACx, LALT(KC_LCTL)),
+    [L_xACS] = COMBO(l_xACS, LALT(LCTL(KC_LSFT))),
+    [L_Gxxx] = COMBO(l_Gxxx, KC_LGUI),
+    [L_GxxS] = COMBO(l_GxxS, LGUI(KC_LSFT)),
+    [L_GxCx] = COMBO(l_GxCx, LGUI(KC_LCTL)),
+    [L_GxCS] = COMBO(l_GxCS, LGUI(LCTL(KC_LSFT))),
+    [L_GAxx] = COMBO(l_GAxx, LGUI(KC_LALT)),
+    [L_GAxS] = COMBO(l_GAxS, LGUI(LALT(KC_LSFT))),
+    [L_GACx] = COMBO(l_GACx, LGUI(LALT(KC_LCTL))),
+    [L_GACS] = COMBO(l_GACS, LGUI(LALT(LCTL(KC_LSFT)))),
+
+    [R_xxxS] = COMBO(r_xxxS, KC_LSFT),
+    [R_xxCx] = COMBO(r_xxCx, KC_LCTL),
+    [R_xxCS] = COMBO(r_xxCS, LCTL(KC_LSFT)),
+    [R_xAxx] = COMBO(r_xAxx, KC_LALT),
+    [R_xAxS] = COMBO(r_xAxS, LALT(KC_LSFT)),
+    [R_xACx] = COMBO(r_xACx, LALT(KC_LCTL)),
+    [R_xACS] = COMBO(r_xACS, LALT(LCTL(KC_LSFT))),
+    [R_Gxxx] = COMBO(r_Gxxx, KC_LGUI),
+    [R_GxxS] = COMBO(r_GxxS, LGUI(KC_LSFT)),
+    [R_GxCx] = COMBO(r_GxCx, LGUI(KC_LCTL)),
+    [R_GxCS] = COMBO(r_GxCS, LGUI(LCTL(KC_LSFT))),
+    [R_GAxx] = COMBO(r_GAxx, LGUI(KC_LALT)),
+    [R_GAxS] = COMBO(r_GAxS, LGUI(LALT(KC_LSFT))),
+    [R_GACx] = COMBO(r_GACx, LGUI(LALT(KC_LCTL))),
+    [R_GACS] = COMBO(r_GACS, LGUI(LALT(LCTL(KC_LSFT)))),
 };
 
 // [Keymaps] -----------------------------------------------------------------//
@@ -82,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
          _____,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,    KC_A,   ALT_S,   CTL_D,   SFT_F,    KC_G,                         KC_H,   SFT_J,   CTL_K,   ALT_L, GUI_QUO,   _____,\
+         _____,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_QUOT,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
