@@ -17,7 +17,7 @@
 
 // Combos
 #define COMBO_COUNT 30
-#define COMBO_TERM 35
+#define COMBO_TERM 55
 #define COMBO_MOD_TERM 200
 #define COMBO_MUST_HOLD_MODS
 #define COMBO_PERMISSIVE_HOLD
