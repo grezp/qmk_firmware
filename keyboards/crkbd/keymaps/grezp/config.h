@@ -16,7 +16,7 @@
 #define QMK_KEYS_PER_SCAN 4
 
 // Combos
-#define COMBO_COUNT 30
+#define COMBO_COUNT 60
 #define COMBO_TERM 55
 #define COMBO_MOD_TERM 200
 #define COMBO_MUST_HOLD_MODS
