@@ -31,6 +31,12 @@ bool master_oled_cleared = false;
 #define E_CTL   LCTL_T(KC_E)
 #define I_ALT   LALT_T(KC_I)
 #define O_GUI   LGUI_T(KC_O)
+
+// Copy/paste mods
+#define UNDO    LCTL(KC_Z)
+#define CUT     LCTL(KC_X)
+#define COPY    LCTL(KC_C)
+#define PASTE   LCTL(KC_V)
  
 // [Keymaps] -----------------------------------------------------------------//
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -62,9 +68,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
          _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                      KC_LCBR,    KC_7,    KC_8,    KC_9, KC_RCBR,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   XXXXX,                      KC_LPRN,    KC_4,    KC_5,    KC_6, KC_RPRN,   _____,\
+         _____, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_BSPC,                      KC_LPRN,    KC_4,    KC_5,    KC_6, KC_RPRN,   _____,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____,   XXXXX, KC_ALGR,  KC_DEL, KC_BSPC,   XXXXX,                      KC_LBRC,    KC_1,    KC_2,    KC_3, KC_RBRC,   _____,\
+         _____,    UNDO,     CUT,    COPY,   PASTE,  KC_DEL,                      KC_LBRC,    KC_1,    KC_2,    KC_3, KC_RBRC,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                              XXXXX,   XXXXX,   XXXXX,     KC_DOT,    KC_0,  KC_GRV \
                                         //`--------------------------'  `--------------------------'
@@ -113,7 +119,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case A_GUI:
         case O_GUI:
-            return TAPPING_TERM + 50;
+            return TAPPING_TERM + 75;
+        case SYM_ENT:
+        case NUM_ESC:
+            return TAPPING_TERM + 25;
         default:
             return TAPPING_TERM;
     }
