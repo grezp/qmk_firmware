@@ -1,3 +1,6 @@
+#ifndef _GREZP_ENUMS_H
+#define _GREZP_ENUMS_H
+
 // [CRKBD layers Init] -------------------------------------------------------//
 typedef enum {
     _COLEMAK,
@@ -11,3 +14,5 @@ typedef enum {
 }CRKBD_LAYERS;
 
 extern enum CRKBD_LAYERS crkbd_layers;
+
+#endif
