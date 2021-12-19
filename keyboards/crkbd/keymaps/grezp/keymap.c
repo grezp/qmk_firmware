@@ -3,7 +3,6 @@
 #include "layer.h"
 
 // [Init Variables] ----------------------------------------------------------//
-extern uint8_t is_master;
 // Oled timer similar to Drashna's
 static uint32_t oled_timer = 0;
 // Boolean to store the master LED clear so it only runs once.
@@ -131,18 +130,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // [Process User Input] ------------------------------------------------------//
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
-      #ifdef OLED_DRIVER_ENABLE
-          oled_timer = timer_read32();
-      #endif
+#ifdef  OLED_ENABLE
+        oled_timer = timer_read();
+#endif
     }
     return true;
 }
 
 // [OLED Configuration] ------------------------------------------------------//
-#ifdef OLED_DRIVER_ENABLE
+#ifdef OLED_ENABLE
 // Init Oled and Rotate....
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (!has_usb())
+    if (!is_keyboard_master())
       return OLED_ROTATION_180;  // flips the display 180 to see it from my side
     return rotation;
 }
@@ -170,22 +169,22 @@ void render_slave_oled(void) {
 }
 
 // {OLED Task} -----------------------------------------------//
-void oled_task_user(void) {
+bool oled_task_user(void) {
     // First time out switches to logo as first indication of iddle.
-    if (timer_elapsed32(oled_timer) > 100000 && timer_elapsed32(oled_timer) < 479999) {
+    if (timer_elapsed(oled_timer) > 100000 && timer_elapsed(oled_timer) < 479999) {
         // Render logo on both halves before full timeout
-        if (is_master && !master_oled_cleared) {
+        if (is_keyboard_master() && !master_oled_cleared) {
             // Clear master OLED once so the logo renders properly
             oled_clear();
             master_oled_cleared = true;
         }
         render_logo();
-        return;
+        return false;
     }
     // Drashna style timeout for LED and OLED Roughly 8mins
-    else if (timer_elapsed32(oled_timer) > 480000) {
+    else if (timer_elapsed(oled_timer) > 480000) {
         oled_off();
-        return;
+        return false;
     }
     else {
         oled_on();
@@ -199,12 +198,13 @@ void oled_task_user(void) {
                 render_logo();
                 break;
             default:
-                if (is_master) {
+                if (is_keyboard_master()) {
                     render_master_oled();
                 } else {
                     render_slave_oled();
                 }
         }
     }
+    return false;
 }
 #endif
