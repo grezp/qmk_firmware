@@ -7,9 +7,8 @@ typedef enum {
     _QWERTY,
     _NUM,
     _SYM,
-    _MED,
     _NAV,
-    _MOU,
+    _MACR,
     _FUN
 }CRKBD_LAYERS;
 

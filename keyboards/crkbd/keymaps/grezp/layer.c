@@ -38,6 +38,9 @@ void render_layer_state(void){
         case _FUN:
             oled_write_ln_P((const char*) PSTR("[ MODE | F-KEYS    ]"), false);
             break;
+        case _MACR:
+            oled_write_ln_P((const char*) PSTR("[ MODE | MACROS    ]"), false);
+            break;
         default:
             oled_write_ln_P((const char*) PSTR("[ MODE | UNDEF     ]"), false);
     }

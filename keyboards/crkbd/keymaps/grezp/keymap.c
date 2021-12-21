@@ -20,20 +20,30 @@ bool master_oled_cleared = false;
 #define T_SYM    TG(_SYM)
 #define T_NAV    TG(_NUM)
 #define L_FUNC   MO(_FUN)
+#define L_MACR   MO(_MACR)
 
+#define SPC_CTL LCTL_T(KC_SPC)
+#define BSP_SFT LSFT_T(KC_BSPC)
 #define CTL_SFT LSFT(KC_LCTRL)
+
+#define UNDO    LCTL(KC_Z)
+#define REDO    LCTL(KC_Y)
+#define COPY    LCTL(KC_C)
+#define CUT     LCTL(KC_X)
+#define PASTE   LCTL(KC_V)
+#define LCA_DEL LCA(KC_DEL)
 
 // [Keymaps] -----------------------------------------------------------------//
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK] = LAYOUT( \
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-        KC_DEL,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN, KC_BSPC,\
+       KC_TILD,    KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y, KC_SCLN,  KC_DEL,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
        NAV_TAB,    KC_A,    KC_R,    KC_S,    KC_T,    KC_G,                         KC_M,    KC_N,    KC_E,    KC_I,    KC_O, KC_QUOT,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, KC_LGUI,\
+        L_MACR,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, KC_RCTL,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LCTRL, SYM_ESC, KC_LSFT,     KC_SPC, NUM_ENT, KC_LSFT \
+                                           KC_LALT, SYM_ESC, SPC_CTL,   BSP_SFT, NUM_ENT, KC_LGUI \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -84,6 +94,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                              XXXXX,   _____,   XXXXX,      XXXXX,   _____,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
+
+    [_MACR] = LAYOUT(
+    //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+         XXXXX,     REDO,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
+         _____,    UNDO,     CUT,    COPY,   PASTE,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+    //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
+                                           LCA_DEL,   XXXXX,   XXXXX,      XXXXX,   XXXXX,   XXXXX \
+                                        //`--------------------------'  `--------------------------'
+    ),
+
 
     [_NAV] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
