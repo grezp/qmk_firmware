@@ -57,19 +57,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+---------|
          XXXXX,   XXXXX,   XXXXX,   XXXXX, KC_LSFT,   XXXXX,                         KC_0,    KC_1,    KC_2,    KC_3, KC_LBRC, KC_RBRC,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,  L_FUNC,   XXXXX,      XXXXX,   _____,   XXXXX \
+                                             XXXXX,  L_FUNC,  KC_SPC,      XXXXX,   _____,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
     [_SYM] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         XXXXX, KC_BSLS, KC_AMPR, KC_ASTR, KC_LPRN, KC_PIPE,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+         XXXXX, KC_BSLS, KC_PERC, KC_AMPR, KC_HASH,  KC_DLR,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-       KC_TILD, KC_UNDS,  KC_DLR, KC_PERC, KC_CIRC, KC_PLUS,                        XXXXX, KC_LCTL, KC_LALT, KC_LGUI,   XXXXX,   T_SYM,\
+         XXXXX, KC_PLUS,  KC_EQL, KC_ASTR, KC_UNDS, KC_CIRC,                        XXXXX, KC_LCTL, KC_LALT, KC_LGUI,   XXXXX,   T_SYM,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        KC_GRV, KC_MINS, KC_EXLM,   KC_AT, KC_HASH,  KC_EQL,                        XXXXX, KC_LSFT,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+         XXXXX,  KC_GRV, KC_EXLM, KC_PIPE, KC_MINS,   KC_AT,                        XXXXX, KC_LSFT,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   _____,   XXXXX,      XXXXX,  L_FUNC,   XXXXX \
+                                             XXXXX,   _____,   XXXXX,    KC_BSPC,  L_FUNC,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
