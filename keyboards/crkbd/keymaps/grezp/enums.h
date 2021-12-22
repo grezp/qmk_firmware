@@ -5,10 +5,10 @@
 typedef enum {
     _COLEMAK,
     _QWERTY,
+    _AMOD,
     _NUM,
     _SYM,
     _NAV,
-    _MACR,
     _FUN
 }CRKBD_LAYERS;
 
