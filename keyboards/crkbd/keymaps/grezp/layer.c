@@ -27,6 +27,7 @@ void render_layer_state(void){
             oled_write_ln_P((const char*) PSTR("[ MODE | QWRTY     ]"), false);
             break;
         case _NUM:
+        case _NUM2:
             oled_write_ln_P((const char*) PSTR("[ MODE | NUMBERS   ]"), false);
             break;
         case _SYM:

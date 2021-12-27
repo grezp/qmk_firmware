@@ -8,6 +8,7 @@ typedef enum {
     _AMOD,
     _NUM,
     _SYM,
+    _NUM2,
     _NAV,
     _FUN
 }CRKBD_LAYERS;

@@ -16,8 +16,10 @@ bool master_oled_cleared = false;
 #define SYM_ESC  LT(_SYM, KC_ESC)
 #define NAV_TAB  LT(_NAV, KC_TAB)
 #define T_QWER   TG(_QWERTY)
-#define L_FUNC   MO(_FUN)
+#define T_FUNC   TG(_FUN)
 #define L_AMOD   MO(_AMOD)
+#define L_NUM    MO(_NUM2)
+#define L_SYM    MO(_SYM)
 
 // Mod Combos
 #define SPC_CTL LCTL_T(KC_SPC)
@@ -79,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+---------|
          XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                         KC_0,    KC_1,    KC_2,    KC_3, KC_LBRC, KC_RBRC,\
     //|--------+--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,  L_FUNC,  KC_SPC,      XXXXX,   _____,   XXXXX \
+                                             XXXXX,   L_SYM,  KC_SPC,      XXXXX,   _____,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -91,35 +93,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX,  KC_GRV, KC_EXLM, KC_PIPE, KC_MINS,   KC_AT,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   _____,   XXXXX,    KC_BSPC,  L_FUNC,   XXXXX \
+                                             XXXXX,   _____,   XXXXX,    KC_BSPC,   L_NUM,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
     [_FUN] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  T_FUNC,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   XXXXX,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-        T_QWER,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  KC_F11,                       KC_F12,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  KC_INS,\
+         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  KC_F11,                       KC_F12,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  KC_INS,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                             XXXXX,   _____,   XXXXX,      XXXXX,   _____,   XXXXX \
+                                             XXXXX,   XXXXX,   XXXXX,      XXXXX,   XXXXX,   XXXXX \
                                         //`--------------------------'  `--------------------------'
     ),
 
 
     [_NAV] = LAYOUT(
     //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-         XXXXX, KC_PGUP,   KC_UP, KC_PGDN, KC_VOLU,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
+         XXXXX, KC_PGUP,   KC_UP, KC_PGDN, KC_VOLU,   XXXXX,                        XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,  T_FUNC,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-         _____, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,   XXXXX,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   XXXXX,   XXXXX,\
+         _____, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD,   XXXXX,                      KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   XXXXX,  T_QWER,\
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,   XXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END,   XXXXX, KC_LGUI,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            KC_LCTL, CTL_SFT, KC_LSFT,    KC_RSFT, KC_LALT,   XXXXX \
                                         //`--------------------------'  `--------------------------'
-    )
+    ),
 
+    [_NUM2] = LAYOUT(
+    //,-----------------------------------------------------.                    ,-----------------------------------------------------.
+         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                        XXXXX,    KC_7,    KC_8,    KC_9, KC_LCBR, KC_RCBR,\
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+---------|
+         XXXXX,   XXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,                       KC_DOT,    KC_4,    KC_5,    KC_6, KC_LPRN, KC_RPRN,\
+    //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+---------|
+         XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,                         KC_0,    KC_1,    KC_2,    KC_3, KC_LBRC, KC_RBRC,\
+    //|--------+--------+--------+--------+--------+--------+--------|   |--------+--------+--------+--------+--------+--------+--------|
+                                             XXXXX,   L_SYM,  KC_SPC,      XXXXX,   _____,   XXXXX \
+                                        //`--------------------------'  `--------------------------'
+    )
 };
 
 // [Tapping Term Per Key] ----------------------------------------------------//
