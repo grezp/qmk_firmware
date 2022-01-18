@@ -26,8 +26,11 @@ bool master_oled_cleared = false;
 #define BSP_SFT LSFT_T(KC_BSPC)
 #define CTL_SFT LSFT(KC_LCTRL)
 #define LCA_DEL LCA(KC_DEL)
-#define KC_LCA  LCTL(KC_LALT)
-#define SFT_GUI LSFT(KC_LGUI)
+/* #define KC_LCA  LCTL(KC_LALT) */
+#define CTL_SPC LCTL(KC_SPC)
+#define GUI_SPC LGUI(KC_SPC)
+#define GUI_CTL LGUI(KC_LCTL)
+#define SFT_ALT LSFT(KC_LALT)
 
 #define UNDO    LCTL(KC_Z)
 #define REDO    LCTL(KC_Y)
@@ -45,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
         L_AMOD,    KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H, KC_COMM,  KC_DOT, KC_SLSH, KC_CAPS,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LALT, SYM_ESC, SPC_CTL,    BSP_SFT, NUM_ENT, KC_LGUI \
+                                           KC_LGUI, SYM_ESC, SPC_CTL,    BSP_SFT, NUM_ENT, KC_LALT \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -69,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          _____,   _____,   _____,   _____,   _____,   _____,                        _____,   _____,   _____,   _____,   _____,   _____,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           LCA_DEL,  KC_LCA,   XXXXX,    KC_LSFT, SFT_GUI, KC_LGUI \
+                                           GUI_CTL, GUI_SPC, CTL_SPC,    KC_LSFT, SFT_ALT,   _____ \
                                         //`--------------------------'  `--------------------------'
     ),
 
@@ -118,7 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
          XXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE,   XXXXX,                      KC_HOME, KC_PGDN, KC_PGUP,  KC_END,   XXXXX, KC_LGUI,\
     //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LCTL, CTL_SFT, KC_LSFT,    KC_RSFT, KC_LALT,   XXXXX \
+                                           KC_LGUI, GUI_CTL, KC_LCTL,    KC_LSFT, SFT_ALT, KC_LGUI \
                                         //`--------------------------'  `--------------------------'
     ),
 
